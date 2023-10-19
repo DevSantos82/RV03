@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, request
-from comunidadeimpressionadora import app
-from comunidadeimpressionadora.forms import FormLogin, FormCriarConta
+from comunidadeclp import app
+from comunidadeclp.forms import FormLogin, FormCriarConta
 
 lista_usuarios = ['Lira', 'João', 'Alon', 'Alessandra', 'Amanda']
 
