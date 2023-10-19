@@ -1,17 +1,15 @@
-from flask import Flask, render_template, url_for, request, flash, redirect
-from forms import FormLogin, FormCriarConta
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
+import os
+import sqlalchemy
 
 app = Flask(__name__)
 
-
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-
-@app.route('/contato')
-def contato():
-    return render_template('contato.html')
-
-
+app.config['SECRET_KEY'] = '29cecf8afd6176f06bb3f55472d490d1'
+if os.getenv("DATABASE_URL"):
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
+    from comunidadeclp import routes
