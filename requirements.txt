@@ -18,3 +18,4 @@ psycopg2==2.9.9
 gunicorn==21.2.0
 Pillow==10.0.1
 packaging==23.2
+email-validator==2.0.0.post2
