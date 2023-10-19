@@ -11,6 +11,6 @@ else:
 
 
 database = SQLAlchemy(app)
-
+bcrypt = Bcrypt(app)
 
 from comunidadeclp import routes
