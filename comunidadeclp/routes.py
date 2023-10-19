@@ -3,7 +3,7 @@ from comunidadeclp import app
 from comunidadeclp.forms import FormLogin, FormCriarConta
 
 
-lista_usuarios = ['Lira', 'João', 'Alon', 'Alessandra', 'Amanda']
+
 
 @app.route('/')
 def home():
@@ -17,7 +17,7 @@ def contato():
 
 @app.route('/usuarios')
 def usuarios():
-    return render_template('usuarios.html', lista_usuarios=lista_usuarios)
+    return render_template('usuarios.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
