@@ -15,7 +15,3 @@ def contato():
     return render_template('contato.html')
 
 
-@app.route('/usuarios')
-def usuarios():
-    return render_template('usuarios.html', lista_usuarios=lista_usuarios)
-
