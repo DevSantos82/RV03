@@ -20,6 +20,7 @@ def contato():
 
 @app.route('/usuarios')
 def usuarios():
+    lista_usuarios = Usuario.query.all()
     return render_template('usuarios.html', lista_usuarios=lista_usuarios)
 
 
