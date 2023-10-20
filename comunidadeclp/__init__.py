@@ -7,6 +7,7 @@ import os
 
 
 app = Flask(__name__)
+app_1 = Flask(__name__)
 
 app.config['SECRET_KEY'] = '29cecf8afd6176f06bb3f55472d490d1'
 if os.getenv("DATABASE_URL"):
