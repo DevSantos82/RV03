@@ -17,7 +17,7 @@ else:
 
 database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-login_man = LoginManager(app)
+
 
 
 from comunidadeclp import routes
