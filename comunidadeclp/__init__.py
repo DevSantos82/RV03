@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
 
-login_manager = LoginManager(app)
+
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ else:
 
 database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-
+login_man = LoginManager(app)
 
 
 from comunidadeclp import routes
