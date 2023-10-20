@@ -17,6 +17,7 @@ else:
 
 database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+login_manager = LoginMaager(app)
 
 
 
