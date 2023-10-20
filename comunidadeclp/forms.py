@@ -10,6 +10,12 @@ class FormCriarConta(FlaskForm):
     confirmacao_senha = PasswordField('Confirmação da Senha', validators=[DataRequired(), EqualTo('senha')])
     botao_submit_criarconta = SubmitField('Criar Conta')
 
+    def validate_email(self, email):
+        from comunidadeclp.models import Usuario
+        usuario = Usuario.query.filter_by(email=email.data).first()
+        if usuario:
+            raise ValidationError ('E-mail já cadastrado. Cadastre-se com outro e-mail ou faça login para continuar')
+
 
 class FormLogin(FlaskForm):
     email = StringField('E-mail', validators=[DataRequired(), Email()])
