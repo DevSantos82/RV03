@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
-
+from comunidadeclp.models import Usuario
 
 class FormCriarConta(FlaskForm):
     username = StringField('Nome de Usuário', validators=[DataRequired()])
@@ -11,7 +11,6 @@ class FormCriarConta(FlaskForm):
     botao_submit_criarconta = SubmitField('Criar Conta')
 
     def validate_email(self, email):
-        from comunidadeclp.models import Usuario
         usuario = Usuario.query.filter_by(email=email.data).first()
         if usuario:
             raise ValidationError ('E-mail já cadastrado. Cadastre-se com outro e-mail ou faça login para continuar')
