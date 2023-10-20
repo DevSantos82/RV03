@@ -1,10 +1,12 @@
-from flask import render_template, redirect, url_for, flash, request
-from comunidadeclp import app, database, bcrypt
-from comunidadeclp.forms import FormLogin, FormCriarConta
-from comunidadeclp.models import Usuario
+from flask import render_template, redirect, url_for, flash, request, abort
+from comunidadeclp import app, database, bcrypt, app_1
+from comunidadeclp.forms import FormLogin, FormCriarConta, FormEditarPerfil, FormCriarPost
+from comunidadeclp.models import Usuario, Post
 from flask_login import login_user, logout_user, current_user, login_required
 lista_usuarios = ['Lira', 'João', 'Alon', 'Alessandra', 'Amanda']
-
+import secrets
+import os
+from PIL import Image
 
 @app.route('/')
 def home():
