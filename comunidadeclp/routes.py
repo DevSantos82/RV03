@@ -19,7 +19,7 @@ def contato():
 
 
 @app.route('/usuarios')
-
+@login_required
 def usuarios():
     lista_usuarios = Usuario.query.all()
     return render_template('usuarios.html', lista_usuarios=lista_usuarios)
@@ -48,7 +48,7 @@ def login():
 
 
 @app.route('/sair')
-
+@login_required
 def sair():
     logout_user()
     flash(f'Logout Feito com Sucesso', 'alert-success')
@@ -56,14 +56,14 @@ def sair():
 
 
 @app.route('/perfil')
-
+@login_required
 def perfil():
     foto_perfil = url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil))
     return render_template('perfil.html', foto_perfil=foto_perfil)
 
 
 @app.route('/post/criar', methods=['GET', 'POST'])
-
+@login_required
 def criar_post():
     form = FormCriarPost()
     if form.validate_on_submit():
@@ -97,7 +97,7 @@ def atualizar_cursos(form):
 
 
 @app.route('/perfil/editar', methods=['GET', 'POST'])
-
+@login_required
 def editar_perfil():
     form = FormEditarPerfil()
     if form.validate_on_submit():
@@ -118,7 +118,7 @@ def editar_perfil():
 
 
 @app.route('/post/<post_id>', methods=['GET', 'POST'])
-
+@login_required
 def exibir_post(post_id):
     post = Post.query.get(post_id)
     if current_user == post.autor:
@@ -138,7 +138,7 @@ def exibir_post(post_id):
 
 
 @app.route('/post/<post_id>/excluir', methods=['GET', 'POST'])
-
+@login_required
 def excluir_post(post_id):
     post = Post.query.get(post_id)
     if current_user == post.autor:
