@@ -30,6 +30,7 @@ def login():
     form_login = FormLogin()
     form_criarconta = FormCriarConta()
    if form_login.validate_on_submit() and 'botao_submit_login' in request.form:
+       usuario = Usuario.query.filter_by(email=form_login.email.data).first()
        login_user(usuario)
        flash(f'Login feito com sucesso no e-mail: {form_login.email.data}', 'alert-success')
        return redirect(url_for('home'))
